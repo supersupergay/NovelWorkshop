@@ -91,7 +91,7 @@ node source/test_interface.cjs
 python3.13 source/verify_release.py NEW.exe
 ```
 
-本次验证包括后端回归、真实本地 HTTP 与页面脚本事件测试、完整 API 地址请求、自动保存轮换与互斥、定稿导出、Word 样本渲染检查和 Windows 包结构与图标资源检查。测试模型使用模拟服务；未在原生 Windows 上运行 EXE，也未使用真实服务商密钥进行收费调用。页面脚本测试不等于真实浏览器视觉测试。
+本次验证包括后端回归、真实本地 HTTP 与页面脚本事件测试、完整 API 地址请求、自动保存轮换与互斥、定稿导出、Word 样本渲染检查和 Windows 包结构与图标资源检查。测试模型使用模拟服务；已在原生 Windows11 上运行 EXE，测试使用Edge浏览器打开界面，测试使用Kimi和Deepseek官方密钥进行收费调用。页面脚本测试不等于真实浏览器视觉测试。
 
 ## 支持项目
 
