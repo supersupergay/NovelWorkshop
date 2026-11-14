@@ -1,0 +1,18 @@
+{
+  "version": "2026.11.14.1",
+  "architecture": "Windows x64",
+  "runtime": "CPython 3.13",
+  "executable": "NovelWorkshop_2026.11.14.1.exe",
+  "sha256": "c76fc0a069dc8a77d4769d6ff81d00e87a7e58f477e93f7894937cb4f3092c3c",
+  "backend_tests": 51,
+  "native_windows_tested": false,
+  "live_provider_tested": false,
+  "icon": "icon.ico",
+  "editable_exports": [
+    "docx",
+    "txt",
+    "md",
+    "rtf",
+    "html"
+  ]
+}
