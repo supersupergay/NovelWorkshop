@@ -54,9 +54,6 @@
 
 完整地址模式请选择与服务端匹配的协议并手动填写模型 ID；程序不会猜测模型列表地址。无需鉴权的服务可留空密钥。地址必须是 HTTP 或 HTTPS，不能包含用户名、密码或 `#` 片段；中文路径需使用 URL 编码。程序直连所填地址，不回退到其他服务商，不跟随重定向。
 
-MiMo 预设使用 `https://api.xiaomimimo.com/v1` 的 Chat Completions 接口与 `api-key` 鉴权。模型 ID 以账号实际可用列表为准；其他专用套餐或网关地址可使用完整自定义项，并按服务端要求选择协议。
-
-MiMo 官方接入说明：https://mimo.mi.com/docs/en-US/quick-start/summary/first-api-call
 
 ## 写作与审稿
 
