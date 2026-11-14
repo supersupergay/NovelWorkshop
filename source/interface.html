@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="icon.ico" type="image/x-icon">
+<title>长篇工坊 2026.11.14.1 · 审稿与定稿评论</title>
+<style>
+:root{color-scheme:light;--paper:#f5f2ea;--white:#fffcf5;--ink:#262d2b;--muted:#545f59;--line:#dcd9cd;--green:#204a3d;--soft:#e8f0e8;--rust:#904c2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 "Microsoft YaHei","PingFang SC",system-ui,sans-serif}
+header{background:#223f35;color:#fdf8e9;padding:20px clamp(16px,4vw,60px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:15px}.mark{border:1px solid #8da798;padding:6px 10px;font:24px/1.25 Georgia,serif}
+h1,h2,h3,p{margin:0}h1{font-size:24px;letter-spacing:.09em}h2{font-size:21px}h3{font-size:16px}
+header p{font-size:13px;color:#d6e3d7}.toolbar,.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+button,.button{font:inherit;font-size:14px;cursor:pointer;color:var(--green);border:1px solid #bfcbbf;border-radius:6px;padding:6px 12px;background:#f9faf4;text-decoration:none;white-space:nowrap}
+button:hover,.button:hover{background:var(--soft)}button:disabled{cursor:default;opacity:.52}
+button.primary{background:var(--green);color:white;border-color:var(--green)}button.primary:hover{background:#2d6050}
+header button,header .button{background:#304f43;color:#fff;border-color:#6e887c}header button:hover,header .button:hover{background:#3f6254}
+main{max-width:1520px;margin:auto;padding:18px clamp(12px,3vw,42px) 42px}
+#status{padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:#eeebe0;margin-bottom:12px;min-height:40px}
+#status[data-tone="error"]{background:#f8e7dc;color:#772e1b}
+.box{background:var(--white);border:1px solid var(--line);border-radius:9px;padding:15px;margin-bottom:12px;min-width:0}
+details summary{cursor:pointer;font-weight:650;color:var(--green)}
+details>div{margin-top:9px}.hint{color:var(--muted);font-size:13px;margin:5px 0 8px}
+.grid{display:grid;grid-template-columns:minmax(185px,215px) minmax(0,1fr);gap:13px;align-items:start}
+.desk{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:12px;align-items:start}
+.provider-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.profile{border:1px solid var(--line);border-radius:7px;padding:10px;min-width:0}.profile h3{margin-bottom:5px}.profile label{margin-bottom:6px}.profile .endpoint{overflow-wrap:anywhere}.card-grid{display:grid;grid-template-columns:85px 1fr;gap:8px}
+label{display:block;font-size:13px;color:var(--muted);font-weight:600}
+input,textarea,select{width:100%;font:inherit;color:var(--ink);background:#fffefa;border:1px solid #cccfc3;border-radius:5px;padding:6px 8px}
+input:focus,textarea:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid #4e836f;outline-offset:2px}
+textarea{resize:vertical;min-height:60px}#body{min-height:405px;line-height:1.85}#goal{min-height:90px}
+#notes{min-height:115px}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:space-between;margin-bottom:7px}
+#chapters{display:grid;gap:6px;margin:10px 0;max-height:65vh;overflow:auto}
+.chapter{width:100%;text-align:left;white-space:normal;overflow-wrap:anywhere}.chapter.selected{border-color:#457462;background:var(--soft)}
+.badge{display:inline-block;font-size:12px;font-weight:650;color:var(--green);background:var(--soft);padding:1px 7px;border-radius:4px}
+.warn{background:#f3e4d7;color:#803c25}.issue{border-top:1px solid var(--line);padding:10px 0;overflow-wrap:anywhere}
+.issue p{margin:4px 0}.issue label{display:flex;gap:5px;align-items:center;cursor:pointer}
+input[type=checkbox]{width:auto;flex-shrink:0}.quote{padding:6px 8px;border-left:2px solid #9baa9c;background:#f5f4ed;white-space:pre-wrap}
+#version{width:auto;max-width:100%}.divider{border-top:1px solid var(--line);margin:12px 0}
+@media(max-width:900px){.desk{grid-template-columns:1fr}}
+@media(max-width:630px){.grid,.provider-grid{grid-template-columns:1fr}#chapters{max-height:170px}.card-grid{grid-template-columns:85px minmax(0,1fr)}}
+#work-status{padding:8px 10px;margin-bottom:8px;background:var(--soft);border-radius:5px;white-space:pre-wrap}#commentary-body{white-space:pre-wrap;line-height:1.9}dialog{border:1px solid var(--line);border-radius:10px;padding:24px;max-width:440px;width:90%;background:var(--white)}dialog::backdrop{background:#152b2466}
+[hidden]{display:none!important}.discussion-turn{margin:12px 0;padding:12px;border-left:3px solid #9baa9c;background:#f5f4ed;white-space:pre-wrap;overflow-wrap:anywhere}.discussion-turn.user{border-color:#457462;background:#e8f0e8}.locate{padding:1px 7px;margin-left:6px;font-size:12px}#body::selection{background:#ffe0a4;color:#222}#commentary-body{overflow-wrap:anywhere}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.app-icon{display:block;border-radius:5px}
+:root[data-theme="night"]{color-scheme:dark;--paper:#171d1b;--white:#202824;--ink:#e3e7df;--muted:#b3beb5;--line:#3e4b43;--green:#a5ccb6;--soft:#2b4035;--rust:#e8ac87}
+[data-theme="night"] header{background:#182d24}
+[data-theme="night"] input,[data-theme="night"] textarea,[data-theme="night"] select{background:#18221d;border-color:#536057;color:var(--ink)}
+[data-theme="night"] button,[data-theme="night"] .button{background:#28392f;color:#d4e7da;border-color:#596f60}
+[data-theme="night"] button:hover,[data-theme="night"] .button:hover{background:#354c3e}
+[data-theme="night"] button.primary{background:#a5ccb6;color:#14271c;border-color:#a5ccb6}
+[data-theme="night"] #status{background:#25332b}
+[data-theme="night"] #status[data-tone="error"],[data-theme="night"] .warn{background:#452f25;color:#ffd0b0}
+[data-theme="night"] .quote,[data-theme="night"] .discussion-turn{background:#27332c}
+[data-theme="night"] .discussion-turn.user{background:#2a3d31}
+[data-theme="night"] dialog{color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><img class="app-icon" src="icon.ico" width="48" height="48" alt="文"><div><h1>长篇工坊</h1><p id="build-version">2026.11.14.1 · API 直连版</p></div></div>
+  <nav class="toolbar"><button id="theme-toggle" type="button" aria-pressed="false">夜晚模式</button><label for="export-format" class="sr-only">导出格式</label><select id="export-format" style="width:auto"><option value="docx">Word (.docx)</option><option value="txt">纯文本 (.txt)</option><option value="md">Markdown (.md)</option><option value="rtf">富文本 (.rtf)</option><option value="html">网页 (.html)</option></select><a id="export" class="button">导出定稿</a></nav>
+</header>
+<main>
+  <div id="status" role="status" aria-live="polite">正在加载……</div>
+  <section class="box">
+    <div class="row"><h2>项目</h2><span class="hint">本地保存 · 独立管理每本小说</span></div>
+    <label>当前项目<select id="project-select"></select></label>
+    <div class="actions" style="margin-top:10px">
+      <button id="project-save" class="primary">保存项目到本地</button>
+      <button id="project-open">从本地读取项目</button>
+      <button id="project-rename">重命名项目</button>
+      <button id="project-delete">删除当前项目</button>
+      <input id="project-file" type="file" accept=".novelproj,.json" hidden>
+    </div>
+    <div class="actions" style="margin-top:10px">
+
+      <button id="project-new">新建项目</button>
+    </div>
+    <label style="margin-top:10px">本项目保存目录<input id="save-directory" placeholder="例如 D:\小说项目\我的小说"></label>
+    <button id="apply-directory">应用保存目录</button><p class="hint" id="autosave-state" role="status">每 30 分钟自动保存，保留最近两份。</p><p class="hint" id="directory-state"></p>
+    <p class="hint">项目文件（.novelproj）包含规则、风格、全部稿件版本、审稿记录和当前编辑，不包含 API 密钥。读取文件会新建独立副本。</p>
+  </section>
+  <details class="box" id="config">
+    <summary>模型与 API 设置</summary>
+    <p class="hint">可使用国内 API、本机或内网模型。填写服务商的 API 接口地址，获取模型后选择并应用。所有请求直连所填地址；程序无需额外账号或第三方验证。密钥只在本次运行期间保留。</p>
+    <div class="provider-grid" id="profiles"></div>
+  </details>
+  <details class="box">
+    <summary>故事规则</summary>
+    <div><textarea id="rules" aria-label="故事规则" placeholder="世界规则、叙事视角、硬性约束……"></textarea></div>
+    <button id="save-rules">保存规则</button>
+  </details>
+  <details class="box" open>
+    <summary>写手的写作风格</summary>
+    <div><textarea id="style" maxlength="12000" aria-label="写作风格" placeholder="例如：第一人称，语言克制，短句为主；通过动作和对话表现情绪，少用比喻；节奏缓慢，保留人物的犹疑。"></textarea></div>
+    <button id="save-style">保存写作风格</button>
+    <p class="hint">按项目保存；生成正文和修改稿件都会使用。留空则采用默认叙述。</p>
+  </details>
+  <details class="box" open>
+    <summary>审稿要求</summary>
+    <div><textarea id="review_requirements" maxlength="12000" aria-label="审稿要求" placeholder="补充你希望特别检查的内容，例如：避免角色过早解释主题，关注视角越界和重复表达。"></textarea></div>
+    <button id="save-review-requirements">保存审稿要求</button>
+    <p class="hint">默认审查章内逻辑、疑似 AI 痕迹和行文节奏；这里的要求会额外加入每次审稿。</p>
+  </details>
+  <div class="grid">
+    <aside class="box">
+      <div class="row"><h2>章节</h2><span id="project-tag" class="badge"></span></div>
+      <div id="chapters" aria-label="章节列表"></div>
+      <button id="new-card">新建章节</button>
+    </aside>
+    <div>
+      <section class="box">
+        <div class="row"><h2>章节卡</h2><span class="hint">设定这章要发生的事</span></div>
+        <div class="card-grid">
+          <label>章号<input id="number" type="number" min="1" max="999999999" step="1"></label>
+          <label>标题<input id="title" maxlength="200"></label>
+        </div>
+        <label>本章内容与篇幅<textarea id="goal" maxlength="12000" placeholder="这一章要发生什么，哪些信息可以揭晓？"></textarea></label>
+        <label>行文节奏<textarea id="pacing" maxlength="6000" placeholder="例如：开场略写交代变化，中段放慢呈现行动，结尾收住；哪些场景详写，哪些信息延后，不再重复上一章的争论。"></textarea></label>
+        <div class="card-grid" style="grid-template-columns:1fr 1fr">
+          <label>人物、地点、伏笔标签<input id="tags" maxlength="1000" placeholder="用逗号分隔"></label>
+          <label>必须引用的定稿章号<input id="refs" maxlength="200" placeholder="例如 1，3，9"></label>
+        </div>
+        <div class="actions" style="margin-top:10px"><button id="save-card">保存章节卡</button><button id="generate" class="primary">生成正文</button></div>
+      </section>
+      <div class="desk">
+        <section class="box">
+          <div class="row"><h2>正文</h2><select id="version" aria-label="稿件版本"></select></div>
+          <div id="work-status" role="status" aria-live="polite">写手与审稿待命</div>
+          <label for="body">可编辑正文</label>
+          <textarea id="body" maxlength="80000" placeholder="生成草稿，或在这里粘贴、编辑自己的正文。"></textarea>
+          <label style="margin:8px 0"><input id="auto-review" type="checkbox" checked> 自动审查：生成或改稿后先显示正文，再自动审查</label>
+          <div class="actions"><button id="manual">保存为新版本</button><button id="review">审查当前版本</button></div>
+          <p class="hint" id="draft-state"></p>
+        </section>
+        <section class="box">
+          <div class="row"><h2>章节审稿</h2><span id="review-state" class="badge"></span></div>
+          <div id="issues"></div>
+          <label for="instruction">改稿指令</label>
+          <textarea id="instruction" maxlength="10000" placeholder="勾选希望写手处理的问题，也可直接补充要求。"></textarea>
+          <button id="revise">按选中问题改稿</button>
+          <div class="divider"></div>
+          <label for="notes">定稿台账</label>
+          <p class="hint">确认人物知情、事件和伏笔变更。后续章节会引用这里的记录。</p>
+          <textarea id="notes" maxlength="16000"></textarea>
+          <label><input id="override" type="checkbox"> 明确接受审稿问题或按手工定稿导入</label>
+          <button id="approve" class="primary">确认定稿</button>
+        </section>
+      </div>
+    </div>
+  </div>
+  <section class="box" id="commentary-section">
+    <div class="row"><h2>定稿评论</h2><button id="comment" class="primary">评论现有定稿</button></div>
+    <label>评论者人设<textarea id="commentator-persona" maxlength="12000" placeholder="例如：一位直率、重视人物可信度的中年文学编辑，说话自然，指出问题时给出具体例子。"></textarea></label>
+    <button id="save-commentator-persona">保存评论者人设</button>
+    <p class="hint">新评论使用这里的人设；已有对话延续评论生成时的人设，修改后重新评论生效。</p>
+    <p class="hint" id="commentary-hint">配置可选的定稿评论模型，全部已有章节定稿后可手动评论。</p>
+    <div id="commentary-body">尚未进行定稿评论。</div>
+    <div id="commentary-discussion"></div>
+    <div id="commentary-reply-area" hidden>
+      <label>回复评论者<textarea id="comment-reply" maxlength="12000" placeholder="回应评论，解释你的考虑，或追问某条修改建议……"></textarea></label>
+      <div class="actions"><button id="send-comment-reply" class="primary">发送回复</button><button id="delete-comment">删除当前评论</button></div>
+    </div>
+  </section>
+</main>
+<dialog id="new-project-dialog"><h2>新建项目</h2><label>项目名称<input id="project-name" maxlength="120"></label><div class="actions" style="margin-top:12px"><button id="create-project" class="primary">创建项目</button><button id="cancel-project">取消</button></div></dialog>
+<dialog id="rename-project-dialog"><h2>重命名项目</h2><label>项目名称<input id="rename-project-name" maxlength="120"></label><div class="actions" style="margin-top:12px"><button id="confirm-rename" class="primary">保存名称</button><button id="cancel-rename">取消</button></div></dialog>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const BUILD_VERSION = "2026.11.14.1";
+let project = "main", state = {}, active = null, busy = false, draft = null;
+let cardBaseline = "", bodyBaseline = "", rulesBaseline = "", notesBaseline = "";
+let styleBaseline = "", reviewBaseline = "", personaBaseline = "";
+const roles = {writer:"写手", reviewer:"审稿", commentator:"定稿评论"};
+const applied = {};
+const buttonIds = ["project-rename", "confirm-rename", "cancel-rename", "save-rules", "new-card", "save-card",
+  "generate", "manual", "review", "revise", "approve", "save-style", "project-new", "project-delete", "project-save", "project-open", "save-review-requirements", "apply-directory", "comment", "create-project", "cancel-project", "save-commentator-persona", "send-comment-reply", "delete-comment"];
+function status(message, error = false) {
+  $("status").textContent = message;
+  $("status").dataset.tone = error ? "error" : "normal";
+  $("work-status").textContent = message;
+}
+function el(tag, value, className) {
+  const element = document.createElement(tag);
+  if (value !== undefined) element.textContent = value;
+  if (className) element.className = className;
+  return element;
+}
+function cardInput() {
+  return {number: Number($("number").value), title: $("title").value, goal: $("goal").value,
+    pacing: $("pacing").value, tags: $("tags").value, refs: $("refs").value};
+}
+function cardChanged() { return JSON.stringify(cardInput()) !== cardBaseline; }
+function draftChanged() { return $("body").value !== bodyBaseline; }
+function hasUnsavedManuscript() {
+  return cardChanged() || draftChanged() || $("rules").value !== rulesBaseline ||
+    $("style").value !== styleBaseline || $("review_requirements").value !== reviewBaseline ||
+    $("notes").value !== notesBaseline || $("instruction").value.trim() !== "";
+}
+function hasUnsaved() {
+  return hasUnsavedManuscript() || $("commentator-persona").value !== personaBaseline || $("comment-reply").value.trim() !== "";
+}
+function canNavigate() { return !hasUnsaved() || confirm("当前有未保存的编辑，继续切换？"); }
+function updateButtons() {
+  for (const id of buttonIds) $(id).disabled = busy;
+  $("version").disabled = busy || !draft;
+  $("project-select").disabled = busy;
+  $("project-delete").disabled = busy || !project;
+  $("comment").disabled = busy || !state.can_comment || !applied.commentator?.configured;
+  for (const entry of $("chapters").querySelectorAll("button")) entry.disabled = busy;
+  for (const input of document.querySelectorAll("textarea,input,#profiles select,#profiles button")) input.disabled = busy;
+  $("body").disabled = false;
+  $("body").readOnly = busy;
+  $("send-comment-reply").disabled = busy || !state.commentary || !state.can_comment || state.commentary_stale || !applied.commentator?.configured;
+  $("delete-comment").disabled = busy || !state.commentary;
+  if (!busy && !project) {
+    for (const id of buttonIds) $(id).disabled = !["project-new", "project-open", "create-project", "cancel-project"].includes(id);
+  }
+  if (!busy) {
+    const same = active !== null && cardInput().number === active;
+    $("manual").disabled = !same;
+    $("review").disabled = $("revise").disabled = $("approve").disabled = !same || !draft;
+  }
+}
+async function request(path, data, params = {}) {
+  const query = new URLSearchParams({...params, project});
+  const config = data === undefined ? {} :
+    {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data)};
+  const response = await fetch(path + "?" + query, config);
+  const result = await response.json();
+  if (!response.ok) throw Error(result.error || "请求失败。");
+  if (path === "state" && result.build_version !== BUILD_VERSION)
+    throw Error("页面与程序版本不一致。请关闭旧程序，并从新版 EXE 打开的页面进入。");
+  return result;
+}
+function action(name, data) { return request("action/" + name, data); }
+async function task(working, operation) {
+  if (busy) return;
+  busy = true;
+  updateButtons();
+  status(working);
+  const poll = setInterval(async () => {
+    try { const progress = await request("progress"); if (busy && progress.message) $("work-status").textContent = progress.message; } catch {}
+  }, 700);
+  try { await operation(); }
+  catch (error) { status(error.message || "操作失败。", true); }
+  finally { clearInterval(poll); busy = false; updateButtons(); void autosaveTick(); }
+}
+async function load(number = null, version = null, start = false) {
+  let workspace = null;
+  if (start) {
+    state = await request("state");
+    project = state.project_id ?? project;
+    if (state.night_mode !== undefined) setNight(state.night_mode);
+    number = state.chapters[0]?.number ?? null;
+    workspace = state.workspace;
+    if (workspace) { number = workspace.active; version = workspace.version; }
+  }
+  const params = number === null ? {} : {number};
+  if (version !== null) params.version = version;
+  state = await request("state", undefined, params);
+  active = number;
+  paint();
+  if (workspace) restoreWorkspace(workspace);
+}
+function paint() {
+  $("build-version").textContent = state.build_version + " · 本软件需用户自行配置API。";
+  $("project-tag").textContent = state.project_name || "无项目";
+  $("project-select").replaceChildren();
+  for (const entry of state.projects) {
+    const option = el("option", entry.name);
+    option.value = entry.id;
+    $("project-select").append(option);
+  }
+  $("project-select").value = project;
+  updateExport();
+  if (!$("profiles").children.length) buildProfiles();
+  $("rules").value = rulesBaseline = state.rules;
+  $("style").value = styleBaseline = state.style;
+  $("review_requirements").value = reviewBaseline = state.review_requirements || "";
+  $("save-directory").value = state.save_directory;
+  $("directory-state").textContent = "自动保存写入此目录；「保存项目到本地」会在此目录生成完整 .novelproj 文件。";
+  $("auto-review").checked = state.auto_review !== false;
+  $("commentator-persona").value = personaBaseline = state.commentator_persona || "";
+  $("comment-reply").value = "";
+  paintCommentary();
+  const chapter = state.chapters.find(item => item.number === active);
+  $("chapters").replaceChildren();
+  for (const item of state.chapters) {
+    const title = "第 " + item.number + " 章 · " + item.title +
+      (item.stale ? " 〔待复核〕" : item.canon ? " 〔已定稿〕" : "");
+    const button = el("button", title, "chapter" + (item.number === active ? " selected" : ""));
+    button.onclick = () => {
+      if (canNavigate()) task("读取章节……", async () => { await load(item.number); status(title); });
+    };
+    $("chapters").append(button);
+  }
+  if (!state.chapters.length) $("chapters").append(el("p", "还没有章节。", "hint"));
+  $("number").value = chapter?.number ?? ((state.chapters.at(-1)?.number ?? 0) + 1);
+  $("number").readOnly = Boolean(chapter);
+  for (const id of ["title", "goal", "tags", "refs", "pacing"]) $(id).value = chapter?.[id] ?? "";
+  cardBaseline = JSON.stringify(cardInput());
+  draft = state.draft ?? null;
+  $("version").replaceChildren();
+  for (const item of state.versions ?? []) {
+    const option = el("option", "稿件 #" + item.id + (chapter?.canon === item.id ? " · 当前定稿" :
+      item.approved ? " · 历史定稿" : item.reviewed ? " · 已审" : " · 未审"));
+    option.value = item.id;
+    $("version").append(option);
+  }
+  if (draft) $("version").value = draft.id;
+  else $("version").append(el("option", "暂无稿件"));
+  $("body").value = bodyBaseline = draft?.body ?? "";
+  $("instruction").value = "";
+  $("override").checked = false;
+  $("notes").value = notesBaseline = draft?.approved ? draft.notes : (draft?.report?.notes ?? "");
+  $("draft-state").textContent = draft ? "稿件 #" + draft.id + "。手动修改后请先保存为新版本。" : "";
+  paintReview();
+}
+function paintReview() {
+  const report = draft?.report;
+  $("issues").replaceChildren();
+  $("review-state").textContent = !report ? "未审" : !draft.current_review ? "审稿已过期" :
+    report.issues.length ? report.issues.length + " 个问题" : "未报告问题";
+  $("review-state").className = "badge" + (report && (!draft.current_review || report.issues.length) ? " warn" : "");
+  if (!report) { $("issues").append(el("p", "审稿结果会显示在这里。", "hint")); return; }
+  if (report.draft_characters) $("issues").append(el("p", "本次审查正文：" + report.draft_characters + " 字符", "hint"));
+  if (report.model) $("issues").append(el("p", "审稿模型 " + report.model, "hint"));
+  if (!draft.current_review) $("issues").append(el("p", "章节卡、前文版本或规则有变化，请重新审查。", "hint"));
+  if (!report.issues.length) $("issues").append(el("p", "本次审稿未报告问题。可继续人工复读正文。", "hint"));
+  for (const [key, title] of [["logic","章内逻辑"],["ai_style","疑似 AI 痕迹"],["pacing","行文节奏"]]) {
+    if (report[key]) { const section = el("section", undefined, "issue"); section.append(el("h3", title), el("p", report[key])); $("issues").append(section); }
+  }
+  report.issues.forEach((issue, index) => {
+    const box = el("article", undefined, "issue");
+    const label = el("label");
+    const check = document.createElement("input");
+    check.type = "checkbox";
+    check.dataset.issue = index;
+    label.append(check, el("span", issue.severity + " · " + issue.kind));
+    box.append(label, el("p", issue.reason), el("p", "建议：" + issue.suggestion));
+    if (issue.draft_quote) {
+      const quote = el("p", (issue.draft_verified ? "草稿引文｜" : "草稿引文未找到｜") + issue.draft_quote, "quote");
+      const locate = el("button", "⌖ 定位", "locate");
+      locate.type = "button";
+      locate.title = "跳转到正文并选中这段引文；重复引文可再次点击定位下一处";
+      locate.onmousedown = event => event.preventDefault();
+      locate.onclick = () => locateQuote(issue.draft_quote);
+      quote.append(locate);
+      box.append(quote);
+    }
+    if (issue.source_quote && !sameQuotedPlace(issue)) {
+      const source = /^C(\d+)V(\d+)$/.exec(issue.source_id);
+      const ref = source ? "第 " + source[1] + " 章 · 稿件 #" + source[2] : issue.source_id === "RULES" ? "故事规则" : issue.source_id === "DRAFT" ? "本章正文" : "未知出处";
+      box.append(el("p", ref + (issue.source_verified ? "｜" : "（引文未核实）｜") + issue.source_quote, "quote"));
+      if (issue.source_id === "DRAFT") {
+        const locateSource = el("button", "⌖ 定位本章依据", "locate");
+        locateSource.onmousedown = event => event.preventDefault();
+        locateSource.onclick = () => locateQuote(issue.source_quote);
+        box.append(locateSource);
+      }
+      if (source && issue.source_verified) {
+        const link = el("button", "⌖ 定位引用原文");
+        link.onclick = () => {
+          if (canNavigate()) task("读取引用……", async () => {
+            await load(Number(source[1]), Number(source[2]));
+            locateQuote(issue.source_quote);
+          });
+        };
+        box.append(link);
+      }
+    }
+    $("issues").append(box);
+  });
+}
+function sameQuotedPlace(issue) {
+  const source = /^C(\d+)V(\d+)$/.exec(issue.source_id);
+  const sameText = issue.source_id === "DRAFT" || source && Number(source[1]) === active && Number(source[2]) === draft?.id;
+  if (!sameText || !issue.draft_quote || !issue.source_quote) return false;
+  const a = quoteRanges($("body").value, issue.draft_quote), b = quoteRanges($("body").value, issue.source_quote);
+  // Ambiguous repeated text may be two separate places; only deduplicate when
+  // both quotations resolve uniquely to the same passage.
+  return a.length === 1 && b.length === 1 && a[0][0] === b[0][0] && a[0][1] === b[0][1];
+}
+let lastLocation = null;
+function quoteRanges(text, quote) {
+  if (!quote || !quote.trim()) return [];
+  const exact = [];
+  for (let start = text.indexOf(quote); start !== -1; start = text.indexOf(quote, start + Math.max(1, quote.length))) exact.push([start, start + quote.length]);
+  if (exact.length) return exact;
+  const canonical = c => ({'“':'"','”':'"','「':'"','」':'"','『':'"','』':'"','‘':"'",'’':"'",'，':',','。':'.','：':':','；':';','！':'!','？':'?','（':'(', '）':')'})[c] || c.normalize("NFKC");
+  let normalized = "";
+  const positions = [];
+  for (let i = 0; i < text.length; i++) if (!/\s/u.test(text[i])) { const part = canonical(text[i]); normalized += part; for (let j=0;j<part.length;j++) positions.push(i); }
+  const needle = [...quote].filter(c => !/\s/u.test(c)).map(canonical).join("");
+  const ranges = [];
+  for (let start = normalized.indexOf(needle); start !== -1; start = normalized.indexOf(needle, start + needle.length)) ranges.push([positions[start], positions[start + needle.length - 1] + 1]);
+  return ranges;
+}
+function locateQuote(quote) {
+  const area = $("body"), text = area.value, ranges = quoteRanges(text, quote);
+  if (!ranges.length) { status("当前正文找不到这段引文。正文可能已修改，或模型引文不准确；请重新审查。", true); return false; }
+  const next = lastLocation?.text === text && lastLocation?.quote === quote ? (lastLocation.index + 1) % ranges.length : 0;
+  const [start, end] = ranges[next];
+  lastLocation = {text, quote, index:next};
+  area.focus({preventScroll:true});
+  area.setSelectionRange(start, end);
+  area.scrollIntoView({block:"center", behavior:"auto"});
+  // Measure actual soft wrapping with a hidden mirror, rather than estimating
+  // line number from newlines. Preserve the textarea's selection and contents.
+  const mirror = document.createElement("div"), marker = document.createElement("span");
+  const style = getComputedStyle(area);
+  for (const name of ["fontFamily", "fontSize", "fontWeight", "fontStyle", "lineHeight", "letterSpacing", "wordSpacing", "paddingTop", "paddingBottom", "paddingLeft", "paddingRight", "textIndent", "tabSize"]) mirror.style[name] = style[name];
+  Object.assign(mirror.style, {position:"absolute", left:"-100000px", top:"0", visibility:"hidden", whiteSpace:"pre-wrap", overflowWrap:"break-word", boxSizing:"border-box", width:area.clientWidth + "px"});
+  mirror.textContent = text.slice(0, start);
+  marker.textContent = text.slice(start, end) || "\u200b";
+  mirror.append(marker);
+  document.body.append(mirror);
+  const targetTop = Math.max(0, marker.offsetTop - mirror.offsetTop - area.clientHeight / 3);
+  mirror.remove();
+  const applySelection = () => {
+    if (area.value !== text || lastLocation?.index !== next || lastLocation?.quote !== quote) return;
+    area.focus({preventScroll:true});
+    area.setSelectionRange(start, end);
+    area.scrollTop = targetTop;
+  };
+  applySelection();
+  requestAnimationFrame(applySelection);
+  status("已定位并选中正文引文" + (ranges.length > 1 ? "（第 " + (next + 1) + "/" + ranges.length + " 处，再次点击可切换）" : "") + "。");
+  return true;
+}
+function paintCommentary() {
+  const comment = state.commentary;
+  $("commentary-body").textContent = comment?.body || "尚未进行定稿评论。";
+  $("commentary-reply-area").hidden = !comment;
+  $("commentary-discussion").replaceChildren();
+  for (const message of comment?.messages || []) {
+    const turn = el("div", undefined, "discussion-turn " + message.role);
+    turn.append(el("strong", message.role === "user" ? "你" : "评论者"), el("p", message.content));
+    $("commentary-discussion").append(turn);
+  }
+  $("commentary-hint").textContent = (state.commentary_stale ? "现有章节或定稿已变化，下方评论已过期；重新评论后可继续对话。 " : "") +
+    (!state.can_comment ? "已有章节须全部定稿，且不能留有未定稿的新版本。" : !applied.commentator?.configured ? "请配置可选的定稿评论模型。" : "仅依据现有定稿正文；点击按钮才会运行。") + (comment ? " 评论模型：" + comment.model : "");
+}
+async function savePersona() {
+  if ($("commentator-persona").value !== personaBaseline) {
+    const result = await action("commentator-persona", {persona:$("commentator-persona").value});
+    $("commentator-persona").value = personaBaseline = state.commentator_persona = result.commentator_persona;
+  }
+}
+async function writeThenReview(name, data) {
+  const automatic = $("auto-review").checked;
+  const persona = $("commentator-persona").value, reply = $("comment-reply").value;
+  const result = await action(name, data);
+  await load(data.number, result.version);
+  $("commentator-persona").value = persona;
+  $("comment-reply").value = reply;
+  updateButtons();
+  status(automatic ? "正文已保存并显示，正在准备自动审查…" : "正文已保存并显示。自动审查已关闭，可手动点击「审查当前版本」。");
+  // Let the browser paint before issuing a separate review request. The timer
+  // fallback also allows background tabs to continue without waiting for RAF.
+  await new Promise(resolve => { const timer = setTimeout(resolve, 100); requestAnimationFrame(() => { clearTimeout(timer); setTimeout(resolve, 0); }); });
+  if (!automatic) return;
+  try {
+    requireAppliedProfiles(["reviewer"]);
+    status("正文已显示，正在自动审查当前版本…");
+    await action("review", {number:data.number, version:result.version});
+    await keepEdits(data.number, result.version);
+    status("正文已保存，自动审查已完成。");
+  } catch (error) {
+    status("正文已保存并显示。自动审查未完成：" + error.message + " 可点击「审查当前版本」重试。", true);
+  }
+}
+function requireCleanDraft() {
+  if (draftChanged()) throw Error("正文有未保存的编辑，请先保存为新版本。");
+  if (cardChanged()) throw Error("章节卡有未保存的编辑，请先保存章节卡。");
+  if ($("rules").value !== rulesBaseline) throw Error("故事规则有未保存的编辑，请先保存规则。");
+  if ($("review_requirements").value !== reviewBaseline) throw Error("审稿要求有未保存的编辑，请先保存。");
+  if ($("style").value !== styleBaseline) throw Error("写作风格有未保存的编辑，请先保存风格。");
+}
+async function keepEdits(number, id) {
+  const unsavedPersona = $("commentator-persona").value, unsavedReply = $("comment-reply").value;
+  const unsavedNotes = $("notes").value !== notesBaseline ? $("notes").value : null;
+  const instruction = $("instruction").value;
+  const override = $("override").checked;
+  const unsavedRules = $("rules").value !== rulesBaseline ? $("rules").value : null;
+  const unsavedReview = $("review_requirements").value !== reviewBaseline ? $("review_requirements").value : null;
+  const unsavedStyle = $("style").value !== styleBaseline ? $("style").value : null;
+  const unsavedBody = draftChanged() ? $("body").value : null;
+  const unsavedCard = cardChanged() ? cardInput() : null;
+  await load(number, id);
+  $("commentator-persona").value = unsavedPersona;
+  $("comment-reply").value = unsavedReply;
+  if (unsavedNotes !== null) $("notes").value = unsavedNotes;
+  if (unsavedRules !== null) $("rules").value = unsavedRules;
+  if (unsavedReview !== null) $("review_requirements").value = unsavedReview;
+  if (unsavedStyle !== null) $("style").value = unsavedStyle;
+  if (unsavedBody !== null) $("body").value = unsavedBody;
+  if (unsavedCard) for (const [key, value] of Object.entries(unsavedCard)) $(key).value = value;
+  $("instruction").value = instruction;
+  $("override").checked = override;
+}
+function updateExport() {
+  $("export").href = "export?" + new URLSearchParams({project, format:$("export-format").value || "docx"});
+}
+$("export-format").onchange = updateExport;
+function setNight(night) {
+  document.documentElement.dataset.theme = night ? "night" : "day";
+  $("theme-toggle").textContent = night ? "常规模式" : "夜晚模式";
+  $("theme-toggle").setAttribute("aria-pressed", String(night));
+}
+try { setNight(localStorage.getItem("novel-workshop-theme") === "night"); } catch { setNight(false); }
+$("theme-toggle").onclick = () => {
+  const night = document.documentElement.dataset.theme !== "night";
+  setNight(night);
+  try { localStorage.setItem("novel-workshop-theme", night ? "night" : "day"); } catch {}
+  // Backend preference survives the random localhost port changing on restart.
+  if (project && !busy) action("theme", {night}).catch(() => {});
+};
+$("project-rename").onclick = () => {
+  $("rename-project-name").value = state.project_name;
+  $("rename-project-dialog").showModal();
+  $("rename-project-name").focus();
+};
+$("cancel-rename").onclick = () => $("rename-project-dialog").close();
+$("confirm-rename").onclick = () => task("重命名项目…", async () => {
+  await action("rename-project", {name:$("rename-project-name").value});
+  $("rename-project-dialog").close();
+  await keepEdits(active, draft?.id ?? null);
+  status("项目已重命名；保存文件使用新名称。");
+});
+const AUTOSAVE_MS = 30 * 60 * 1000;
+const autosaveDue = new Map();
+async function autosaveTick() {
+  if (!project || !state.projects) return;
+  if (!autosaveDue.has(project)) autosaveDue.set(project, Date.now() + AUTOSAVE_MS);
+  if (Date.now() < autosaveDue.get(project)) return;
+  if (busy) { $("autosave-state").textContent = "自动保存已到时间，等待当前操作完成…"; return; }
+  if ($("new-project-dialog").open || $("rename-project-dialog").open) return;
+  const savingProject = project;
+  busy = true;
+  updateButtons();
+  $("autosave-state").textContent = "正在自动保存…";
+  try {
+    const result = await action("autosave", {workspace:captureWorkspace()});
+    autosaveDue.set(savingProject, Date.now() + AUTOSAVE_MS);
+    $("autosave-state").textContent = result.skipped ? "已由其他页面自动保存，保留最近两份。" : "自动保存完成：" + result.path;
+  } catch (error) {
+    // A failed save never causes a write/review retry or removes editor content.
+    autosaveDue.set(savingProject, Date.now() + 60000);
+    $("autosave-state").textContent = "自动保存失败：" + error.message + " 一分钟后重试。";
+  } finally { busy = false; updateButtons(); }
+}
+setInterval(autosaveTick, 1000);
+$("new-card").onclick = () => {
+  if (canNavigate()) task("打开空白章节卡……", async () => {
+    await load();
+    $("title").focus();
+    status("填写并保存新的章节卡。");
+  });
+};
+$("version").onchange = () => {
+  const target = Number($("version").value);
+  if (!canNavigate()) { $("version").value = draft.id; return; }
+  task("读取稿件版本……", async () => { await load(active, target); status("已打开稿件 #" + target + "。"); });
+};
+function buildProfiles() {
+  for (const [role, title] of Object.entries(roles)) {
+    const section = el("section", undefined, "profile");
+    section.innerHTML = `<h3>${title}模型</h3>
+      <label>服务商<select id="${role}-provider"></select></label>
+      <label>服务商模型列表<select id="${role}-models"><option value="">先获取模型列表，或在下方手动填写</option></select></label>
+      <label>模型 ID（可手动填写）<input id="${role}-model" autocomplete="off" placeholder="选择列表中的模型，或粘贴控制台的模型 ID"></label>
+      <label>API 地址（自定义项填写完整请求地址）<input id="${role}-base" type="url" spellcheck="false" autocomplete="off"></label>
+      <label id="${role}-protocol-label" hidden>完整地址的接口协议<select id="${role}-protocol"><option value="chat">OpenAI Chat Completions</option><option value="responses">OpenAI Responses</option><option value="messages">Anthropic Messages</option></select></label>
+      <label>API 密钥<input id="${role}-key" type="password" autocomplete="off" placeholder="填该服务商的密钥"></label>
+      <p class="hint endpoint" id="${role}-destination"></p>
+      <p class="hint endpoint" id="${role}-key-state"></p>
+      <div class="actions"><button id="${role}-fetch">获取模型列表</button><button id="${role}-save">应用设置</button>
+        <button id="${role}-test">应用并测试连接</button><button id="${role}-clear">清除密钥</button></div>`;
+    $("profiles").append(section);
+    const priority = ["custom_endpoint","mimo","deepseek","qwen","kimi","glm","ark","minimax","siliconflow","ollama","lmstudio",
+      "custom_chat","custom_responses","custom_messages"];
+    const presets = Object.entries(state.providers).sort(([a], [b]) =>
+      (priority.includes(a) ? priority.indexOf(a) : 100) - (priority.includes(b) ? priority.indexOf(b) : 100));
+    for (const [id, preset] of presets) {
+      const option = el("option", preset.label);
+      option.value = id;
+      $(role + "-provider").append(option);
+    }
+    paintProfile(role, state.settings[role]);
+    $(role + "-provider").onchange = () => {
+      const preset = state.providers[$(role + "-provider").value];
+      $(role + "-protocol").value = preset.suffix === "/responses" ? "responses" : preset.suffix === "/messages" ? "messages" : "chat";
+      $(role + "-base").value = preset.base;
+      $(role + "-model").value = preset.model;
+      $(role + "-key").value = "";
+      clearModels(role);
+      showDestination(role);
+      $(role + "-key-state").textContent = "请填入此服务商的模型 ID 和密钥，再应用设置。";
+    };
+    $(role + "-base").oninput = () => {
+      const key = $(role + "-key");
+      if (key.value) key.value = "";
+      clearModels(role);
+      showDestination(role);
+      $(role + "-key-state").textContent = "修改地址后，请为新地址重新填写密钥。";
+    };
+    $(role + "-key").oninput = () => clearModels(role);
+    $(role + "-models").onchange = () => {
+      if ($(role + "-models").value) $(role + "-model").value = $(role + "-models").value;
+    };
+    $(role + "-fetch").onclick = () => task("直接向" + title + "服务商获取模型列表……", async () => {
+      clearModels(role);
+      const result = await action("list-models", {role, ...profileInput(role), key:$(role + "-key").value});
+      const select = $(role + "-models");
+      select.options[0].textContent = result.models.length ? "请选择模型" : "列表为空，可手动填写模型 ID";
+      for (const model of result.models) {
+        const option = el("option", model.name === model.id ? model.id : model.name + " · " + model.id);
+        option.value = model.id;
+        select.append(option);
+      }
+      if (result.models.some(model => model.id === $(role + "-model").value)) select.value = $(role + "-model").value;
+      status("已获取 " + result.models.length + " 个模型，请选择后应用设置。" +
+        (result.truncated ? "当前显示部分模型，其他模型可手动填写。" : "") +
+        " 请选择支持文本对话的模型。");
+    });
+    $(role + "-save").onclick = () => task("应用" + title + "设置……", async () => {
+      const profile = await action("settings", {role, ...profileInput(role), key:$(role + "-key").value});
+      paintProfile(role, profile);
+      status(title + "设置已应用。");
+    });
+    $(role + "-test").onclick = () => task("测试" + title + "连接……", async () => {
+      const profile = await action("settings", {role, ...profileInput(role), key:$(role + "-key").value});
+      paintProfile(role, profile);
+      status("正在直连 " + profile.base + state.providers[profile.provider].suffix);
+      const result = await action("test-provider", {role});
+      status(title + "连接成功。实际请求地址：" + result.endpoint);
+    });
+    $(role + "-clear").onclick = () => task("清除" + title + "密钥……", async () => {
+      requireAppliedProfiles([role], true);
+      const profile = await action("clear-key", {role});
+      paintProfile(role, profile);
+      status(title + "密钥已从本次运行清除。");
+    });
+  }
+}
+function showDestination(role) {
+  const profile = profileInput(role);
+  const preset = state.providers[profile.provider];
+  $(role + "-protocol-label").hidden = profile.provider !== "custom_endpoint";
+  let base = profile.provider === "custom_endpoint" ? profile.base : (profile.base || preset.base).replace(/\/+$/, "");
+  const suffix = preset.suffix;
+  const endpoint = base.endsWith(suffix) ? base : base + suffix;
+  $(role + "-destination").textContent = "当前填写的请求目标：" + endpoint +
+    (profile.provider === "custom_endpoint" ? "。完整地址原样请求，支持公网、内网域名和本机 HTTP/HTTPS。请手动填写模型 ID；无鉴权服务可留空密钥。" : "。仅向此地址发送，不跟随重定向。");
+}
+function clearModels(role) {
+  const option = el("option", "先获取模型列表，或在下方手动填写");
+  option.value = "";
+  $(role + "-models").replaceChildren(option);
+}
+function profileInput(role) {
+  return {provider:$(role + "-provider").value, base:$(role + "-base").value.trim(),
+    model:$(role + "-model").value.trim(), protocol:$(role + "-protocol").value};
+}
+function paintProfile(role, profile) {
+  applied[role] = profile;
+  for (const field of ["provider", "base", "model", "protocol"]) $(role + "-" + field).value = profile[field] || "chat";
+  $(role + "-key").value = "";
+  const label = profile.has_key ? "密钥已配置。" : profile.configured ? "本机地址无需密钥。" : "尚未配置密钥。";
+  const preset = state.providers[profile.provider];
+  $(role + "-key-state").textContent = label + " 请求地址 " + profile.base + preset.suffix;
+  showDestination(role);
+}
+function requireAppliedProfiles(selected, ignoreKey = false) {
+  for (const role of selected) {
+    const form = profileInput(role);
+    if (Object.entries(form).some(([field, value]) => value !== applied[role][field])
+        || (!ignoreKey && $(role + "-key").value)) {
+      $("config").open = true;
+      throw Error("请先应用" + roles[role] + "模型设置。");
+    }
+  }
+}
+function captureWorkspace() {
+  const value = {active, version:draft?.id ?? null, override:$("override").checked};
+  for (const key of ["number", "title", "goal", "tags", "refs", "body", "notes", "instruction", "rules", "style", "pacing", "review_requirements"])
+    value[key] = $(key).value;
+  value.commentator_persona = $("commentator-persona").value;
+  value.comment_reply = $("comment-reply").value;
+  return value;
+}
+function restoreWorkspace(value) {
+  for (const key of ["number", "title", "goal", "tags", "refs", "body", "notes", "instruction", "rules", "style", "pacing", "review_requirements"])
+    $(key).value = value[key] ?? "";
+  $("override").checked = value.override;
+  $("commentator-persona").value = value.commentator_persona ?? state.commentator_persona ?? "";
+  $("comment-reply").value = value.comment_reply ?? "";
+}
+$("project-select").onchange = () => {
+  const next = $("project-select").value;
+  if (!canNavigate()) { $("project-select").value = project; return; }
+  task("打开项目……", async () => {
+    project = next;
+    await load(null, null, true);
+    status("已打开项目：" + state.project_name);
+  });
+};
+$("project-new").onclick = () => {
+  if (!canNavigate()) return;
+  $("new-project-dialog").showModal();
+  $("project-name").focus();
+};
+$("cancel-project").onclick = () => $("new-project-dialog").close();
+$("project-name").onkeydown = event => { if (event.key === "Enter") { event.preventDefault(); $("create-project").click(); } };
+$("create-project").onclick = () => {
+  if (!$("project-name").value.trim()) { $("project-name").focus(); return; }
+  $("new-project-dialog").close();
+  task("新建项目……", async () => {
+    const result = await action("new-project", {name:$("project-name").value.trim()});
+    project = result.project;
+    $("project-name").value = "";
+    await load(null, null, true);
+    status("已新建项目：" + state.project_name);
+  });
+};
+$("apply-directory").onclick = () => task("设置保存目录……", async () => {
+  const result = await action("save-directory", {directory:$("save-directory").value});
+  state.save_directory = result.directory;
+  $("save-directory").value = result.directory;
+  status("本项目已保存到：" + result.directory + "。以后自动保存也使用此目录，旧目录保留恢复副本。");
+});
+$("auto-review").onchange = () => {
+  const enabled = $("auto-review").checked;
+  task("保存自动审查设置…", async () => {
+    try {
+      const result = await action("auto-review", {enabled});
+      state.auto_review = result.auto_review;
+      status(enabled ? "已开启自动审查：正文先显示，再审查。" : "已关闭自动审查：生成或改稿后只显示正文。");
+    } catch (error) { $("auto-review").checked = state.auto_review !== false; throw error; }
+  });
+};
+$("save-commentator-persona").onclick = () => task("保存评论者人设…", async () => { await savePersona(); status("评论者人设已保存，下次生成评论时生效。"); });
+$("comment").onclick = () => {
+  if (state.commentary && !confirm("重新评论会替换当前评论及其对话，是否继续？")) return;
+  task("正在评论现有定稿……", async () => {
+    if (hasUnsavedManuscript()) throw Error("页面有未保存的正文或写作设置，请先保存并定稿后再评论。");
+    requireAppliedProfiles(["commentator"]);
+    await savePersona();
+    const result = await action("comment", {});
+    state.commentary = result.commentary;
+    state.commentary_token = result.commentary_token;
+    state.commentary_stale = false;
+    $("comment-reply").value = "";
+    paintCommentary();
+    status("定稿评论已完成，显示在页面最下方。");
+  });
+};
+$("send-comment-reply").onclick = () => task("评论者正在回复…", async () => {
+  if (hasUnsavedManuscript()) throw Error("有未保存的正文或写作设置，请先处理后再继续评论对话。");
+  requireAppliedProfiles(["commentator"]);
+  const reply = $("comment-reply").value.trim();
+  if (!reply) throw Error("请填写回复内容。");
+  const result = await action("comment-reply", {reply, commentary_token:state.commentary_token});
+  state.commentary = result.commentary;
+  state.commentary_token = result.commentary_token;
+  $("comment-reply").value = "";
+  paintCommentary();
+  status("评论者已回复，对话已保存。");
+});
+$("delete-comment").onclick = () => {
+  if (!state.commentary || !confirm("确定删除当前评论及其全部对话吗？删除后无法在本项目中恢复，小说正文和评论者人设不受影响。")) return;
+  task("删除评论…", async () => {
+    await action("delete-comment", {confirmed:true, commentary_token:state.commentary_token});
+    state.commentary = null;
+    state.commentary_token = "";
+    state.commentary_stale = false;
+    $("comment-reply").value = "";
+    paintCommentary();
+    status("当前评论及对话已删除。");
+  });
+};
+$("project-delete").onclick = () => {
+  if (!project || !confirm("删除项目「" + state.project_name + "」？它会从项目列表移除；建议先保存项目文件。")) return;
+  task("删除项目……", async () => {
+    const result = await action("delete-project", {confirm_name:state.project_name});
+    project = result.project;
+    await load(null, null, true);
+    status("项目已删除。本机仍保留恢复用的数据副本。");
+  });
+};
+$("project-save").onclick = () => task("保存项目文件……", async () => {
+  if ($("save-directory").value.trim() !== state.save_directory) throw Error("请先应用修改后的保存目录。");
+  const result = await action("save-project", {workspace:captureWorkspace()});
+  status("项目已保存：" + result.path + "（包含当前未提交的编辑）");
+});
+$("project-open").onclick = () => { if (canNavigate()) $("project-file").click(); };
+$("project-file").onchange = () => {
+  const file = $("project-file").files[0];
+  $("project-file").value = "";
+  if (!file) return;
+  task("读取项目文件……", async () => {
+    if (file.size > 120 * 1024 * 1024) throw Error("项目文件超过 120 MB，请拆分项目后导入。");
+    let content;
+    try { content = JSON.parse(await file.text()); }
+    catch { throw Error("无法读取项目文件，请选择长篇工坊导出的 .novelproj 文件。"); }
+    const result = await action("import-project", {content});
+    project = result.project;
+    await load(null, null, true);
+    status("已读取为独立项目：" + state.project_name + "。文件中的未提交编辑已恢复到页面，可继续编辑并保存。");
+  });
+};
+$("save-review-requirements").onclick = () => task("保存审稿要求……", async () => {
+  await action("review_requirements", {review_requirements:$("review_requirements").value});
+  reviewBaseline = $("review_requirements").value;
+  await keepEdits(active, draft?.id ?? null);
+  status("审稿要求已保存，旧审稿需要按新要求复核。");
+});
+$("save-style").onclick = () => task("保存写作风格……", async () => {
+  await action("style", {style:$("style").value});
+  styleBaseline = $("style").value;
+  await keepEdits(active, draft?.id ?? null);
+  status("写作风格已保存，将用于本项目之后的生成与改稿。");
+});
+$("save-rules").onclick = () => task("保存规则……", async () => {
+  await action("rules", {rules:$("rules").value});
+  rulesBaseline = $("rules").value;
+  await keepEdits(active, draft?.id ?? null);
+  status("故事规则已保存。旧审稿可能需要复核。");
+});
+$("save-card").onclick = () => task("保存章节卡……", async () => {
+  const input = cardInput();
+  if (active === null && state.chapters.some(item => item.number === input.number)) {
+    throw Error("这个章号已存在，请从左侧打开该章编辑。");
+  }
+  await action("card", input);
+  cardBaseline = JSON.stringify(input);
+  await keepEdits(input.number, draft?.id ?? null);
+  status("章节卡已保存。");
+});
+$("generate").onclick = () => task("写手正在生成正文……", async () => {
+  requireCleanDraft();
+  requireAppliedProfiles(["writer"]);
+  if (active === null) throw Error("请先保存章节卡。");
+  await writeThenReview("generate", {number:active});
+});
+$("manual").onclick = () => task("保存正文版本……", async () => {
+  if (cardChanged()) throw Error("请先保存章节卡。");
+  const result = await action("manual", {number:active, body:$("body").value});
+  bodyBaseline = $("body").value;
+  await keepEdits(active, result.version);
+  status("正文已保存为新版本，可点击「审查当前版本」。");
+});
+$("review").onclick = () => task("正在独立审稿……", async () => {
+  requireCleanDraft();
+  requireAppliedProfiles(["reviewer"]);
+  await action("review", {number:active, version:draft.id});
+  await keepEdits(active, draft.id);
+  status("当前版本审稿已完成。");
+});
+$("revise").onclick = () => task("写手正在改稿……", async () => {
+  requireCleanDraft();
+  requireAppliedProfiles(["writer"]);
+  const picked = [...$("issues").querySelectorAll("input:checked")].map(input =>
+    draft.report.issues[Number(input.dataset.issue)]);
+  const instruction = [$("instruction").value, ...picked.map(issue =>
+    "问题：" + issue.reason + "\n草稿位置：" + issue.draft_quote + "\n建议：" + issue.suggestion)].filter(Boolean).join("\n\n");
+  if (!instruction.trim()) throw Error("请勾选问题或填写改稿指令。");
+  await writeThenReview("revise", {number:active, version:draft.id, instruction});
+});
+$("approve").onclick = () => task("写入定稿……", async () => {
+  requireCleanDraft();
+  await action("approve", {number:active, version:draft.id, notes:$("notes").value, override:$("override").checked});
+  await load(active, draft.id);
+  status("正文和台账已一起定稿。");
+});
+window.addEventListener("beforeunload", event => {
+  if (hasUnsaved() || busy) { event.preventDefault(); event.returnValue = ""; }
+});
+task("正在加载……", async () => {
+  await load(null, null, true);
+  status(project ? "请自行配置 API，保存章节卡后开始写作。" : "请新建项目或从本地读取项目。");
+});
+</script>
+</body>
+</html>
